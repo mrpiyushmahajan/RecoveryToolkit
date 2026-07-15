@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/) and this project adheres to
 semantic versioning.
 
+## [1.0.1] - 2026-07-15
+
+### Fixed
+- **Downloads failing on Windows PowerShell 5.1.** The download module now forces
+  TLS 1.1/1.2/1.3 at import. 5.1 defaults to SSL3/TLS1.0, which official HTTPS
+  hosts reject — this caused most downloads and all GitHub API calls to fail.
+- Corrected stale/invalid catalog URLs: TestDisk now points to the 7.1 stable
+  zip; Adobe Acrobat placeholder URL removed.
+- Added an `openPage` fallback for tools with no stable direct link (GPU-Z,
+  HWiNFO, FastCopy, Adobe Acrobat): the action opens the official download page
+  instead of erroring.
+
 ## [1.0.0] - 2026-07-15
 
 ### Added

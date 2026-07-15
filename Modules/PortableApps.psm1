@@ -49,6 +49,14 @@ function Get-RTPortableApp {
         [Parameter(Mandatory)][string]$DownloadRoot,
         [scriptblock]$ProgressCallback
     )
+    # Some tools have no stable direct link (page-gated or POST downloads).
+    # Open their official page so the user can grab it manually — never a failure.
+    if (($App.PSObject.Properties.Name -contains 'openPage') -and $App.openPage) {
+        Write-RTLog -Message "$($App.name) has no stable direct download; opening its official page." -Level 'Info' -Category 'PortableApps'
+        Start-Process $App.download
+        return [pscustomobject]@{ Id = $App.id; Success = $true; OpenedPage = $true; Message = "Opened official page for $($App.name)." }
+    }
+
     $url = Resolve-RTAppUrl -App $App
     if (-not $url) { return [pscustomobject]@{ Id = $App.id; Success = $false; Message = 'No download URL.' } }
 
@@ -148,6 +156,12 @@ function Install-RTApplication {
         [Parameter(Mandatory)][string]$InstallerRoot,
         [switch]$Silent
     )
+    if (($Installer.PSObject.Properties.Name -contains 'openPage') -and $Installer.openPage) {
+        Write-RTLog -Message "$($Installer.name) has no stable direct installer link; opening its official page." -Level 'Info' -Category 'PortableApps'
+        Start-Process $Installer.download
+        return [pscustomobject]@{ Id = $Installer.id; Success = $true; OpenedPage = $true; Message = "Opened official page for $($Installer.name)." }
+    }
+
     $ext = if ($Installer.download -match '\.msi(\?|$)') { 'msi' } else { 'exe' }
     $dest = Join-Path $InstallerRoot "$($Installer.id).$ext"
     $result = Invoke-RTDownload -Url $Installer.download -Destination $dest

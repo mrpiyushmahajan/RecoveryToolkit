@@ -9,6 +9,19 @@
 
 Set-StrictMode -Version Latest
 
+# Force modern TLS. Windows PowerShell 5.1 defaults to SSL3/TLS1.0, which almost
+# every official HTTPS host now rejects — without this, downloads and GitHub API
+# calls fail en masse on 5.1. PowerShell 7 already negotiates TLS 1.2/1.3.
+try {
+    [Net.ServicePointManager]::SecurityProtocol =
+        [Net.ServicePointManager]::SecurityProtocol -bor
+        [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls11
+    if ([enum]::GetNames([Net.SecurityProtocolType]) -contains 'Tls13') {
+        [Net.ServicePointManager]::SecurityProtocol =
+            [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls13
+    }
+} catch {}
+
 # Fall back to a no-op logger if the launcher has not provided a global one.
 if (-not (Get-Command -Name Write-RTLog -ErrorAction SilentlyContinue)) {
     function Write-RTLog { param([string]$Message, [string]$Level = 'Info', [string]$Category = 'General') Write-Verbose "[$Level] $Message" }

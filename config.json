@@ -1,7 +1,7 @@
 {
   "toolkit": {
     "name": "Windows Recovery Toolkit",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "repository": "https://github.com/mrpiyushmahajan/RecoveryToolkit",
     "updateManifest": "https://api.github.com/repos/mrpiyushmahajan/RecoveryToolkit/releases/latest"
   },
@@ -71,6 +71,7 @@
       "category": "Hardware",
       "official": "https://www.techpowerup.com/gpuz/",
       "download": "https://www.techpowerup.com/download/techpowerup-gpu-z/",
+      "openPage": true,
       "type": "exe",
       "exe": "GPU-Z.exe"
     },
@@ -79,7 +80,8 @@
       "name": "HWiNFO",
       "category": "Hardware",
       "official": "https://www.hwinfo.com/download/",
-      "download": "https://www.sac.sk/download/utildiag/hwi64_824.zip",
+      "download": "https://www.hwinfo.com/download/",
+      "openPage": true,
       "type": "zip",
       "exe": "HWiNFO64.exe"
     },
@@ -97,7 +99,7 @@
       "name": "TestDisk / PhotoRec",
       "category": "Recovery",
       "official": "https://www.cgsecurity.org/wiki/TestDisk_Download",
-      "download": "https://www.cgsecurity.org/testdisk-7.2-WIP.win64.zip",
+      "download": "https://www.cgsecurity.org/testdisk-7.1.win64.zip",
       "type": "zip",
       "exe": "testdisk_win.exe"
     },
@@ -195,9 +197,8 @@
       "name": "FastCopy",
       "category": "Utility",
       "official": "https://fastcopy.jp/",
-      "download": "https://github.com/shirouzu/FastCopy/releases/latest",
-      "githubRepo": "shirouzu/FastCopy",
-      "assetPattern": "FastCopy*.zip",
+      "download": "https://fastcopy.jp/",
+      "openPage": true,
       "type": "zip",
       "exe": "FastCopy.exe"
     }
@@ -256,7 +257,8 @@
       "id": "acrobat",
       "name": "Adobe Acrobat Reader",
       "official": "https://get.adobe.com/reader/",
-      "download": "https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/2400xxxxxxxx/AcroRdrDCx64.exe",
+      "download": "https://get.adobe.com/reader/",
+      "openPage": true,
       "silentArgs": "/sAll /rs /msi EULA_ACCEPT=YES"
     },
     {
