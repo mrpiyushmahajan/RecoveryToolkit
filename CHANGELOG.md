@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/) and this project adheres to
 semantic versioning.
 
+## [1.0.4] - 2026-07-15
+
+### Fixed
+- VLC download: the `vlc-latest-win64.exe` symlink returns HTTP 500 server-side;
+  pinned to the current versioned installer URL instead.
+
 ## [1.0.3] - 2026-07-15
 
 ### Added

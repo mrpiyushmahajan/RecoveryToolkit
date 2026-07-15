@@ -1,7 +1,7 @@
 {
   "toolkit": {
     "name": "Windows Recovery Toolkit",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "repository": "https://github.com/mrpiyushmahajan/RecoveryToolkit",
     "updateManifest": "https://api.github.com/repos/mrpiyushmahajan/RecoveryToolkit/releases/latest"
   },
@@ -250,7 +250,7 @@
       "id": "vlc",
       "name": "VLC Media Player",
       "official": "https://www.videolan.org/vlc/",
-      "download": "https://get.videolan.org/vlc/last/win64/vlc-latest-win64.exe",
+      "download": "https://get.videolan.org/vlc/last/win64/vlc-3.0.23-win64.exe",
       "silentArgs": "/S"
     },
     {
