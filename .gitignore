@@ -1,0 +1,25 @@
+# Runtime data — never commit downloaded binaries, logs or reports
+/Portable/*
+/Installers/*
+/Downloads/*
+/Drivers/*
+/Logs/*
+/Reports/*
+/Cache/*
+
+# Keep the folder structure
+!/Portable/.gitkeep
+!/Installers/.gitkeep
+!/Downloads/.gitkeep
+!/Drivers/.gitkeep
+!/Logs/.gitkeep
+!/Reports/.gitkeep
+!/Cache/.gitkeep
+
+# Editor / OS noise
+.vs/
+*.user
+Thumbs.db
+desktop.ini
+*.tmp
+*.part

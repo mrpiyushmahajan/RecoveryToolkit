@@ -1,0 +1,329 @@
+{
+  "toolkit": {
+    "name": "Windows Recovery Toolkit",
+    "version": "1.0.0",
+    "repository": "https://github.com/YOUR_USERNAME/RecoveryToolkit",
+    "updateManifest": "https://api.github.com/repos/YOUR_USERNAME/RecoveryToolkit/releases/latest"
+  },
+  "settings": {
+    "portableMode": true,
+    "offlineMode": false,
+    "darkMode": true,
+    "maxParallelDownloads": 3,
+    "downloadRetries": 3,
+    "bandwidthLimitKBps": 0,
+    "verifyHashes": true,
+    "requireHttps": true,
+    "logLevel": "Info"
+  },
+  "paths": {
+    "portable": "Portable",
+    "installers": "Installers",
+    "downloads": "Downloads",
+    "drivers": "Drivers",
+    "logs": "Logs",
+    "reports": "Reports",
+    "cache": "Cache"
+  },
+  "modules": {
+    "Download": true,
+    "Update": true,
+    "Hardware": true,
+    "Drivers": true,
+    "Repair": true,
+    "BootRepair": true,
+    "Diagnostics": true,
+    "Reports": true,
+    "PortableApps": true,
+    "UI": true
+  },
+  "portableApps": [
+    {
+      "id": "crystaldiskinfo",
+      "name": "CrystalDiskInfo",
+      "category": "Storage",
+      "official": "https://crystalmark.info/en/software/crystaldiskinfo/",
+      "download": "https://sourceforge.net/projects/crystaldiskinfo/files/latest/download",
+      "type": "zip",
+      "exe": "DiskInfo64.exe"
+    },
+    {
+      "id": "crystaldiskmark",
+      "name": "CrystalDiskMark",
+      "category": "Storage",
+      "official": "https://crystalmark.info/en/software/crystaldiskmark/",
+      "download": "https://sourceforge.net/projects/crystaldiskmark/files/latest/download",
+      "type": "zip",
+      "exe": "DiskMark64.exe"
+    },
+    {
+      "id": "cpuz",
+      "name": "CPU-Z",
+      "category": "Hardware",
+      "official": "https://www.cpuid.com/softwares/cpu-z.html",
+      "download": "https://download.cpuid.com/cpu-z/cpu-z_2.16-en.zip",
+      "type": "zip",
+      "exe": "cpuz_x64.exe"
+    },
+    {
+      "id": "gpuz",
+      "name": "GPU-Z",
+      "category": "Hardware",
+      "official": "https://www.techpowerup.com/gpuz/",
+      "download": "https://www.techpowerup.com/download/techpowerup-gpu-z/",
+      "type": "exe",
+      "exe": "GPU-Z.exe"
+    },
+    {
+      "id": "hwinfo",
+      "name": "HWiNFO",
+      "category": "Hardware",
+      "official": "https://www.hwinfo.com/download/",
+      "download": "https://www.sac.sk/download/utildiag/hwi64_824.zip",
+      "type": "zip",
+      "exe": "HWiNFO64.exe"
+    },
+    {
+      "id": "everything",
+      "name": "Everything Search",
+      "category": "Utility",
+      "official": "https://www.voidtools.com/downloads/",
+      "download": "https://www.voidtools.com/Everything-1.4.1.1028.x64.zip",
+      "type": "zip",
+      "exe": "Everything.exe"
+    },
+    {
+      "id": "testdisk",
+      "name": "TestDisk / PhotoRec",
+      "category": "Recovery",
+      "official": "https://www.cgsecurity.org/wiki/TestDisk_Download",
+      "download": "https://www.cgsecurity.org/testdisk-7.2-WIP.win64.zip",
+      "type": "zip",
+      "exe": "testdisk_win.exe"
+    },
+    {
+      "id": "recuva",
+      "name": "Recuva Portable",
+      "category": "Recovery",
+      "official": "https://www.ccleaner.com/recuva/download",
+      "download": "https://download.ccleaner.com/rcsetup.exe",
+      "type": "exe",
+      "exe": "Recuva64.exe"
+    },
+    {
+      "id": "rufus",
+      "name": "Rufus",
+      "category": "Boot",
+      "official": "https://rufus.ie/",
+      "download": "https://github.com/pbatard/rufus/releases/latest",
+      "githubRepo": "pbatard/rufus",
+      "assetPattern": "rufus-*.exe",
+      "type": "exe",
+      "exe": "rufus.exe"
+    },
+    {
+      "id": "ventoy",
+      "name": "Ventoy",
+      "category": "Boot",
+      "official": "https://www.ventoy.net/en/download.html",
+      "download": "https://github.com/ventoy/Ventoy/releases/latest",
+      "githubRepo": "ventoy/Ventoy",
+      "assetPattern": "ventoy-*-windows.zip",
+      "type": "zip",
+      "exe": "Ventoy2Disk.exe"
+    },
+    {
+      "id": "sysinternals",
+      "name": "Sysinternals Suite",
+      "category": "Utility",
+      "official": "https://learn.microsoft.com/sysinternals/downloads/sysinternals-suite",
+      "download": "https://download.sysinternals.com/files/SysinternalsSuite.zip",
+      "type": "zip",
+      "exe": "autoruns64.exe"
+    },
+    {
+      "id": "notepadpp",
+      "name": "Notepad++ Portable",
+      "category": "Utility",
+      "official": "https://notepad-plus-plus.org/downloads/",
+      "download": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/latest",
+      "githubRepo": "notepad-plus-plus/notepad-plus-plus",
+      "assetPattern": "npp.*.portable.x64.zip",
+      "type": "zip",
+      "exe": "notepad++.exe"
+    },
+    {
+      "id": "7zip",
+      "name": "7-Zip",
+      "category": "Utility",
+      "official": "https://www.7-zip.org/download.html",
+      "download": "https://www.7-zip.org/a/7z2408-x64.exe",
+      "type": "exe",
+      "exe": "7zFM.exe"
+    },
+    {
+      "id": "wiztree",
+      "name": "WizTree",
+      "category": "Utility",
+      "official": "https://www.diskanalyzer.com/download",
+      "download": "https://www.diskanalyzer.com/files/wiztree_4_23_portable.zip",
+      "type": "zip",
+      "exe": "WizTree64.exe"
+    },
+    {
+      "id": "windirstat",
+      "name": "WinDirStat",
+      "category": "Utility",
+      "official": "https://windirstat.net/",
+      "download": "https://github.com/windirstat/windirstat/releases/latest",
+      "githubRepo": "windirstat/windirstat",
+      "assetPattern": "WinDirStat-*.msi",
+      "type": "msi",
+      "exe": "windirstat.exe"
+    },
+    {
+      "id": "bluescreenview",
+      "name": "BlueScreenView",
+      "category": "Diagnostics",
+      "official": "https://www.nirsoft.net/utils/blue_screen_view.html",
+      "download": "https://www.nirsoft.net/utils/bluescreenview-x64.zip",
+      "type": "zip",
+      "exe": "BlueScreenView.exe"
+    },
+    {
+      "id": "fastcopy",
+      "name": "FastCopy",
+      "category": "Utility",
+      "official": "https://fastcopy.jp/",
+      "download": "https://github.com/shirouzu/FastCopy/releases/latest",
+      "githubRepo": "shirouzu/FastCopy",
+      "assetPattern": "FastCopy*.zip",
+      "type": "zip",
+      "exe": "FastCopy.exe"
+    }
+  ],
+  "installers": [
+    {
+      "id": "vcredist",
+      "name": "Visual C++ Runtime (x64)",
+      "official": "https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist",
+      "download": "https://aka.ms/vs/17/release/vc_redist.x64.exe",
+      "silentArgs": "/install /quiet /norestart"
+    },
+    {
+      "id": "dotnet",
+      "name": ".NET Desktop Runtime (x64)",
+      "official": "https://dotnet.microsoft.com/download/dotnet",
+      "download": "https://aka.ms/dotnet/8.0/windowsdesktop-runtime-win-x64.exe",
+      "silentArgs": "/install /quiet /norestart"
+    },
+    {
+      "id": "directx",
+      "name": "DirectX Runtime",
+      "official": "https://www.microsoft.com/download/details.aspx?id=35",
+      "download": "https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe",
+      "silentArgs": "/Q"
+    },
+    {
+      "id": "chrome",
+      "name": "Google Chrome",
+      "official": "https://www.google.com/chrome/",
+      "download": "https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+      "silentArgs": "/quiet /norestart"
+    },
+    {
+      "id": "firefox",
+      "name": "Mozilla Firefox",
+      "official": "https://www.mozilla.org/firefox/",
+      "download": "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US",
+      "silentArgs": "/S"
+    },
+    {
+      "id": "brave",
+      "name": "Brave Browser",
+      "official": "https://brave.com/download/",
+      "download": "https://laptop-updates.brave.com/latest/winx64",
+      "silentArgs": "/silent /install"
+    },
+    {
+      "id": "vlc",
+      "name": "VLC Media Player",
+      "official": "https://www.videolan.org/vlc/",
+      "download": "https://get.videolan.org/vlc/last/win64/vlc-latest-win64.exe",
+      "silentArgs": "/S"
+    },
+    {
+      "id": "acrobat",
+      "name": "Adobe Acrobat Reader",
+      "official": "https://get.adobe.com/reader/",
+      "download": "https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/2400xxxxxxxx/AcroRdrDCx64.exe",
+      "silentArgs": "/sAll /rs /msi EULA_ACCEPT=YES"
+    },
+    {
+      "id": "malwarebytes",
+      "name": "Malwarebytes",
+      "official": "https://www.malwarebytes.com/mwb-download",
+      "download": "https://downloads.malwarebytes.com/file/mb-windows",
+      "silentArgs": "/verysilent"
+    },
+    {
+      "id": "anydesk",
+      "name": "AnyDesk",
+      "official": "https://anydesk.com/download",
+      "download": "https://download.anydesk.com/AnyDesk.exe",
+      "silentArgs": "--install %ProgramFiles%\\AnyDesk --start-with-win --silent"
+    },
+    {
+      "id": "teamviewer",
+      "name": "TeamViewer",
+      "official": "https://www.teamviewer.com/download/windows/",
+      "download": "https://download.teamviewer.com/download/TeamViewer_Setup_x64.exe",
+      "silentArgs": "/S"
+    }
+  ],
+  "vendorTools": [
+    {
+      "id": "samsung-magician",
+      "name": "Samsung Magician",
+      "vendor": "Samsung",
+      "official": "https://semiconductor.samsung.com/consumer-storage/support/tools/"
+    },
+    {
+      "id": "wd-dashboard",
+      "name": "WD Dashboard",
+      "vendor": "Western Digital",
+      "official": "https://support.wdc.com/downloads.aspx?p=279"
+    },
+    {
+      "id": "crucial-storage-executive",
+      "name": "Crucial Storage Executive",
+      "vendor": "Crucial",
+      "official": "https://www.crucial.com/support/storage-executive"
+    },
+    {
+      "id": "kingston-ssd-manager",
+      "name": "Kingston SSD Manager",
+      "vendor": "Kingston",
+      "official": "https://www.kingston.com/en/support/technical/ssdmanager"
+    },
+    {
+      "id": "amd-cleanup",
+      "name": "AMD Cleanup Utility",
+      "vendor": "AMD",
+      "official": "https://www.amd.com/en/support/kb/faq/gpu-601"
+    },
+    {
+      "id": "ddu",
+      "name": "Display Driver Uninstaller",
+      "vendor": "Wagnardsoft",
+      "official": "https://www.wagnardsoft.com/display-driver-uninstaller-DDU-"
+    },
+    {
+      "id": "safety-scanner",
+      "name": "Microsoft Safety Scanner",
+      "vendor": "Microsoft",
+      "official": "https://learn.microsoft.com/microsoft-365/security/intelligence/safety-scanner-download",
+      "download": "https://go.microsoft.com/fwlink/?LinkId=212732"
+    }
+  ]
+}
