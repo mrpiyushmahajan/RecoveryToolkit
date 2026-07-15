@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/) and this project adheres to
 semantic versioning.
 
+## [1.0.3] - 2026-07-15
+
+### Added
+- **One-click bulk download** — new "All-in-One" category with three cards:
+  "Download ALL Portable Tools", "Download ALL Installers (offline)", and
+  "Get EVERYTHING (tools + installers)". No more downloading tools one by one.
+- `-DownloadOnly` switch on `Install-RTApplication` to cache installers to the
+  USB without running them (used by the bulk installer card).
+
 ## [1.0.2] - 2026-07-15
 
 ### Fixed

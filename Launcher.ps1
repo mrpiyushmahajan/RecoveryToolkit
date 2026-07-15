@@ -104,6 +104,54 @@ function New-RTAction {
 }
 
 $actions = @(
+    # --- One-click bulk ---
+    New-RTAction 'Download ALL Portable Tools' 'All-in-One' 'One click: download and extract every portable tool in the catalog to the USB.' {
+        param($ctx)
+        $apps = @($ctx.Config.portableApps); $n = $apps.Count; $i = 0; $ok = 0; $manual = 0
+        Write-RTLog "Downloading all $n portable tools..." 'Info' 'PortableApps'
+        foreach ($app in $apps) {
+            $i++; Set-RTProgress ([int]((($i - 1) / $n) * 100))
+            Write-RTLog "[$i/$n] $($app.name)" 'Info' 'PortableApps'
+            $r = Get-RTPortableApp -App $app -PortableRoot $ctx.Paths.Portable -DownloadRoot $ctx.Paths.Downloads
+            if ($r.OpenedPage) { $manual++ } elseif ($r.Success) { $ok++ } else { Write-RTLog "   failed: $($r.Message)" 'Warning' 'PortableApps' }
+        }
+        Set-RTProgress 100
+        Write-RTLog "Portable tools: $ok downloaded, $manual opened for manual download, $($n-$ok-$manual) failed." 'Info' 'PortableApps'
+    }
+    New-RTAction 'Download ALL Installers (offline)' 'All-in-One' 'One click: cache every installer (browsers, runtimes, etc.) to the USB without running them.' {
+        param($ctx)
+        $insts = @($ctx.Config.installers); $n = $insts.Count; $i = 0; $ok = 0; $skip = 0
+        Write-RTLog "Caching all $n installers to the USB..." 'Info' 'PortableApps'
+        foreach ($inst in $insts) {
+            $i++; Set-RTProgress ([int]((($i - 1) / $n) * 100))
+            Write-RTLog "[$i/$n] $($inst.name)" 'Info' 'PortableApps'
+            $r = Install-RTApplication -Installer $inst -InstallerRoot $ctx.Paths.Installers -DownloadOnly
+            if ($r.Skipped) { $skip++ } elseif ($r.Success) { $ok++ } else { Write-RTLog "   failed: $($r.Message)" 'Warning' 'PortableApps' }
+        }
+        Set-RTProgress 100
+        Write-RTLog "Installers: $ok cached, $skip need manual download, $($n-$ok-$skip) failed. Files are in the Installers folder." 'Info' 'PortableApps'
+    }
+    New-RTAction 'Get EVERYTHING (tools + installers)' 'All-in-One' 'One click: download all portable tools AND cache all installers to the USB.' {
+        param($ctx)
+        $apps = @($ctx.Config.portableApps); $insts = @($ctx.Config.installers)
+        $total = $apps.Count + $insts.Count; $done = 0; $ok = 0
+        Write-RTLog "Getting everything: $($apps.Count) tools + $($insts.Count) installers..." 'Info' 'PortableApps'
+        foreach ($app in $apps) {
+            $done++; Set-RTProgress ([int]((($done - 1) / $total) * 100))
+            Write-RTLog "[$done/$total] tool: $($app.name)" 'Info' 'PortableApps'
+            $r = Get-RTPortableApp -App $app -PortableRoot $ctx.Paths.Portable -DownloadRoot $ctx.Paths.Downloads
+            if ($r.Success) { $ok++ }
+        }
+        foreach ($inst in $insts) {
+            $done++; Set-RTProgress ([int]((($done - 1) / $total) * 100))
+            Write-RTLog "[$done/$total] installer: $($inst.name)" 'Info' 'PortableApps'
+            $r = Install-RTApplication -Installer $inst -InstallerRoot $ctx.Paths.Installers -DownloadOnly
+            if ($r.Success) { $ok++ }
+        }
+        Set-RTProgress 100
+        Write-RTLog "All done: $ok/$total succeeded. Anything not downloaded had no direct link (open its official page manually)." 'Info' 'PortableApps'
+    }
+
     # --- Hardware & Reports ---
     New-RTAction 'Hardware Information' 'Hardware' 'Detect CPU, GPU, RAM, board, BIOS, TPM, Secure Boot.' {
         param($ctx)

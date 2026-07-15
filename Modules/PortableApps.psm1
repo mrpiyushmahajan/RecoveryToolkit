@@ -154,9 +154,14 @@ function Install-RTApplication {
     param(
         [Parameter(Mandatory)]$Installer,
         [Parameter(Mandatory)][string]$InstallerRoot,
-        [switch]$Silent
+        [switch]$Silent,
+        [switch]$DownloadOnly
     )
     if (($Installer.PSObject.Properties.Name -contains 'openPage') -and $Installer.openPage) {
+        if ($DownloadOnly) {
+            Write-RTLog -Message "$($Installer.name) has no direct link; skipped in offline cache (download manually from $($Installer.official))." -Level 'Warning' -Category 'PortableApps'
+            return [pscustomobject]@{ Id = $Installer.id; Success = $false; Skipped = $true; Message = "No direct link; get it from $($Installer.official)" }
+        }
         Write-RTLog -Message "$($Installer.name) has no stable direct installer link; opening its official page." -Level 'Info' -Category 'PortableApps'
         Start-Process $Installer.download
         return [pscustomobject]@{ Id = $Installer.id; Success = $true; OpenedPage = $true; Message = "Opened official page for $($Installer.name)." }
@@ -166,6 +171,11 @@ function Install-RTApplication {
     $dest = Join-Path $InstallerRoot "$($Installer.id).$ext"
     $result = Invoke-RTDownload -Url $Installer.download -Destination $dest
     if (-not $result.Success) { return [pscustomobject]@{ Id = $Installer.id; Success = $false; Message = $result.Message } }
+
+    if ($DownloadOnly) {
+        Write-RTLog -Message "Cached installer: $($Installer.name)" -Level 'Info' -Category 'PortableApps'
+        return [pscustomobject]@{ Id = $Installer.id; Success = $true; Message = "Cached to $dest" }
+    }
 
     if ($Silent) {
         try {
