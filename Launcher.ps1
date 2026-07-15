@@ -13,8 +13,10 @@
 param(
     [switch]$NoElevate,
     [switch]$Console,
-    [switch]$SelfTest,        # Build config/modules/actions and exit without showing the GUI.
-    [string]$RenderScreenshot # Render the GUI off-screen to this PNG path, then exit.
+    [switch]$SelfTest,          # Build config/modules/actions and exit without showing the GUI.
+    [string]$RenderScreenshot,  # Render the GUI off-screen to this PNG path, then exit.
+    [string]$RenderCategory,    # Category to pre-select in the rendered screenshot.
+    [string]$RenderLogFile      # Log file whose lines are preloaded into the rendered log pane.
 )
 
 if ($SelfTest -or $RenderScreenshot) { $NoElevate = $true }
@@ -374,7 +376,7 @@ if ($SelfTest) {
     return
 }
 if ($RenderScreenshot) {
-    Show-RTMainWindow -Context $context -RenderPngPath $RenderScreenshot
+    Show-RTMainWindow -Context $context -RenderPngPath $RenderScreenshot -InitialCategory $RenderCategory -PreloadLogFile $RenderLogFile
     Write-Host "Rendered GUI to $RenderScreenshot" -ForegroundColor Green
     return
 }

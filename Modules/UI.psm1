@@ -77,7 +77,9 @@ function Show-RTMainWindow {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)][hashtable]$Context,
-        [string]$RenderPngPath
+        [string]$RenderPngPath,
+        [string]$InitialCategory,
+        [string]$PreloadLogFile
     )
 
     Add-Type -AssemblyName System.Windows.Forms
@@ -360,6 +362,13 @@ function Show-RTMainWindow {
 
     if ($RenderPngPath) {
         # Off-screen capture for verification / documentation.
+        if ($InitialCategory -and $catList.Items.Contains($InitialCategory)) {
+            $catList.SelectedItem = $InitialCategory
+            & $renderCards
+        }
+        if ($PreloadLogFile -and (Test-Path $PreloadLogFile)) {
+            foreach ($l in (Get-Content $PreloadLogFile)) { $logBox.AppendText("$l$([Environment]::NewLine)") }
+        }
         $form.StartPosition = 'Manual'
         $form.Location = New-Object System.Drawing.Point(-4000, -4000)
         $form.Show()
