@@ -224,18 +224,25 @@ function Show-RTMainWindow {
         $cat.Location = New-Object System.Drawing.Point(12, 72); $cat.AutoSize = $true
         $card.Controls.Add($cat)
 
-        # Hover feedback
-        $enter = { $this.BackColor = $script:RTTheme.Surface2 }.GetNewClosure()
-        $leave = { $this.BackColor = $script:RTTheme.Surface }.GetNewClosure()
+        # Hover feedback. Capture colors as LOCALS first: GetNewClosure rebinds
+        # $script: to a fresh module, so $script:RTTheme would resolve to $null
+        # inside the closure and setting BackColor would throw.
+        $hoverColor = $theme.Surface2
+        $restColor  = $theme.Surface
+        $enter = { $this.BackColor = $hoverColor }.GetNewClosure()
+        $leave = { $this.BackColor = $restColor }.GetNewClosure()
         $card.Add_MouseEnter($enter); $card.Add_MouseLeave($leave)
         foreach ($child in $card.Controls) { $child.Add_MouseEnter($enter); $child.Add_MouseLeave($leave) }
 
+        # Capture the runner locally for the same reason ($script: is rebound in
+        # the closure). $script:RTRunAction is set before any card is created.
+        $runner = $script:RTRunAction
         $click = {
             if ($sync.Running) {
                 [System.Windows.Forms.MessageBox]::Show('An operation is already running. Please wait.', 'Busy') | Out-Null
                 return
             }
-            & $script:RTRunAction $action
+            & $runner $action
         }.GetNewClosure()
         $card.Add_Click($click)
         foreach ($child in $card.Controls) { $child.Add_Click($click) }

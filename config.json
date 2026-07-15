@@ -1,7 +1,7 @@
 {
   "toolkit": {
     "name": "Windows Recovery Toolkit",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "repository": "https://github.com/mrpiyushmahajan/RecoveryToolkit",
     "updateManifest": "https://api.github.com/repos/mrpiyushmahajan/RecoveryToolkit/releases/latest"
   },

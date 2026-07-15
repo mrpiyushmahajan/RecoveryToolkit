@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/) and this project adheres to
 semantic versioning.
 
+## [1.0.2] - 2026-07-15
+
+### Fixed
+- **Unhandled exception "Cannot convert null to type System.Drawing.Color" when
+  hovering or clicking action cards.** The hover/click handlers referenced
+  `$script:RTTheme` / `$script:RTRunAction` inside `GetNewClosure()`, which
+  rebinds `$script:` to a fresh module where those are null. The needed values
+  are now captured as locals before the closure is created.
+
 ## [1.0.1] - 2026-07-15
 
 ### Fixed
