@@ -37,4 +37,4 @@ semantic versioning.
 - Documentation: README, Architecture, Developer Guide, Module Reference,
   Security, Contributing; MIT license.
 
-[1.0.0]: https://github.com/YOUR_USERNAME/RecoveryToolkit/releases/tag/v1.0.0
+[1.0.0]: https://github.com/mrpiyushmahajan/RecoveryToolkit/releases/tag/v1.0.0

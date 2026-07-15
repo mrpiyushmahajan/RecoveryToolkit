@@ -9,7 +9,7 @@
 ## Getting started
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/RecoveryToolkit.git
+git clone https://github.com/mrpiyushmahajan/RecoveryToolkit.git
 cd RecoveryToolkit
 
 # Fast, non-GUI validation of config + modules + action registry:

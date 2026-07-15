@@ -2,8 +2,8 @@
   "toolkit": {
     "name": "Windows Recovery Toolkit",
     "version": "1.0.0",
-    "repository": "https://github.com/YOUR_USERNAME/RecoveryToolkit",
-    "updateManifest": "https://api.github.com/repos/YOUR_USERNAME/RecoveryToolkit/releases/latest"
+    "repository": "https://github.com/mrpiyushmahajan/RecoveryToolkit",
+    "updateManifest": "https://api.github.com/repos/mrpiyushmahajan/RecoveryToolkit/releases/latest"
   },
   "settings": {
     "portableMode": true,
